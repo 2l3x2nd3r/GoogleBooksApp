@@ -1,40 +1,47 @@
-<%= form_tag(:root, :method => "get", id: "search-form") do %>
-  <%= label_tag 'search: ', nil, class: 'label label-default' %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search to books" %>
-
-  <%= label_tag 'keyword: ', nil, class: 'label label-default' %>
-  <%= select_tag :keyword, options_for_select(@keywords), title: "intitle -> Returns results where the text following this keyword is found in the title.
-inauthor -> Returns results where the text following this keyword is found in the author.
-inpublisher -> Returns results where the text following this keyword is found in the publisher.
-subject -> Returns results where the text following this keyword is listed in the category list of the volume.
-isbn -> Returns results where the text following this keyword is the ISBN number." %>
-  <br><br>
-  <%= label_tag 'filtering: ', nil, class: 'label label-default' %>
-  <%= select_tag :filtering, options_for_select(@filters), title: "partial -> Returns results where at least parts of the text are previewable.
-full Only -> returns results where all of the text is viewable.
-free-ebooks -> Only returns results that are free Google eBooks.
-paid-ebooks -> Only returns results that are Google eBooks with a price.
-ebooks -> Only returns results that are Google eBooks, paid or free." %>
-
-  <br><br>
-  <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
-<% end %>
 
 <br>
 
-<table>
-  <% @books.each do |book| %>
-    <tr>
-      <td>
-        <% if book.image_link %>
-          <%= image_tag book.image_link(zoom: 5), class: "thumbnail" %> <br>
-        <% else %>
-          <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail" %>
-        <% end %>
-        <%= link_to book.title, books_show_path(isbn: book.isbn, title: book.title) %> 
-        <br><br><br>
-      </td> 
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="span6">
+    <%= form_tag(:root, :method => "get", id: "search-form") do %>
+      <%= label_tag 'search: ', nil, class: 'label label-default' %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search to books" %>
+
+      <%= label_tag 'keyword: ', nil, class: 'label label-default' %>
+      <%= select_tag :keyword, options_for_select(@keywords), title: "intitle -> Returns results where the text following this keyword is found in the title.
+    inauthor -> Returns results where the text following this keyword is found in the author.
+    inpublisher -> Returns results where the text following this keyword is found in the publisher.
+    subject -> Returns results where the text following this keyword is listed in the category list of the volume.
+    isbn -> Returns results where the text following this keyword is the ISBN number." %>
+      <br><br>
+      <%= label_tag 'filtering: ', nil, class: 'label label-default' %>
+      <%= select_tag :filtering, options_for_select(@filters), title: "partial -> Returns results where at least parts of the text are previewable.
+    full Only -> returns results where all of the text is viewable.
+    free-ebooks -> Only returns results that are free Google eBooks.
+    paid-ebooks -> Only returns results that are Google eBooks with a price.
+    ebooks -> Only returns results that are Google eBooks, paid or free." %>
+
+      <br><br>
+      <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
+    <% end %>
+  </div>
+  <div class="span6">
+    <table class="table-bordered table-striped table-condensed table-hover">
+      <% @books.each do |book| %>
+        <tr>
+          <td>
+            <% if book.image_link %>
+              <center><%= image_tag book.image_link(zoom: 5), class: "thumbnail pull-center" %></center> <br>
+            <% else %>
+              <center><%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail pull-center" %></center>
+            <% end %>
+            <center><%= link_to book.title, books_show_path(isbn: book.isbn, title: book.title) %></center>
+            <br><br><br>
+          </td> 
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
 
