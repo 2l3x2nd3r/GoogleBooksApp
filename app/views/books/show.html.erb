@@ -1,0 +1,6 @@
+<br>
+<%= image_tag @book.image_link(zoom: 5), class: "thumbnail" %>
+<p> Title: <%= @book.title %> </p>
+<p> Authors: <%= @book.authors %> </p>
+<p> <%= link_to 'book info', @book.info_link %> </p>
+<p> <%= link_to 'preview', @book.preview_link %> </p>
