@@ -32,3 +32,5 @@ group :production do
 end
 
 gem 'googlebooks'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'

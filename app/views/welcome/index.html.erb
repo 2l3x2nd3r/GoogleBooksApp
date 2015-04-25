@@ -31,9 +31,9 @@
         <tr>
           <td>
             <% if book.image_link %>
-              <center><%= image_tag book.image_link(zoom: 5), class: "thumbnail pull-center" %></center> <br>
+              <center><%= image_tag book.image_link(zoom: 5), class: "thumbnail" %></center> <br>
             <% else %>
-              <center><%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail pull-center" %></center>
+              <center><%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail" %></center>
             <% end %>
             <center><%= link_to book.title, books_show_path(isbn: book.isbn, title: book.title) %></center>
             <br><br><br>
@@ -41,7 +41,8 @@
         </tr>
       <% end %>
     </table>
+    <% if @books != [] %>
+      <%= will_paginate @books, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0  %> 
+    <% end %>
   </div>
 </div>
-
-
