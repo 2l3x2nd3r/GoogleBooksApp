@@ -5,8 +5,8 @@
       <center><p> <%= @book.title %> </p></center>
       <center><%= image_tag @book.image_link(zoom: 5), class: "thumbnail" %></center>
       <center><p> Authors: <%= @book.authors %> </p></center>
-      <center><p> <%= link_to 'book info', @book.info_link, class: "btn btn-primary btn-lg" %> </p></center>
-      <center><p> <%= link_to 'preview', @book.preview_link, class: "btn btn-primary btn-lg" %> </p></center>
+      <center><p> <%= link_to 'book info', @book.info_link, class: "btn btn-primary btn-lg", target: "_blank" %> </p></center>
+      <center><p> <%= link_to 'preview', @book.preview_link, class: "btn btn-primary btn-lg", target: "_blank" %> </p></center>
     </div>
   </div>
 </div>
