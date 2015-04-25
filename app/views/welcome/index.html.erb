@@ -2,7 +2,7 @@
 <br>
 
 <div class="row">
-  <div class="span6">
+  <div class="span5">
     <%= form_tag(:root, :method => "get", id: "search-form") do %>
       <%= label_tag 'search: ', nil, class: 'label label-default' %>
       <%= text_field_tag :search, params[:search], placeholder: "Search to books" %>
@@ -25,7 +25,7 @@
       <%= submit_tag "Search", :name => nil, class: 'btn btn-default' %>
     <% end %>
   </div>
-  <div class="span6">
+  <div class="span7">
     <table class="table-bordered table-striped table-condensed table-hover">
       <% @books.each do |book| %>
         <tr>

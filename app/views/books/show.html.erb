@@ -1,6 +1,15 @@
 <br>
-<%= image_tag @book.image_link(zoom: 5), class: "thumbnail" %>
-<p> Title: <%= @book.title %> </p>
-<p> Authors: <%= @book.authors %> </p>
-<p> <%= link_to 'book info', @book.info_link %> </p>
-<p> <%= link_to 'preview', @book.preview_link %> </p>
+<div class="col-lg-12">
+  <div class="bs-component">
+    <div class="jumbotron">
+      <center><p> <%= @book.title %> </p></center>
+      <center><%= image_tag @book.image_link(zoom: 5), class: "thumbnail" %></center>
+      <center><p> Authors: <%= @book.authors %> </p></center>
+      <center><p> <%= link_to 'book info', @book.info_link, class: "btn btn-primary btn-lg" %> </p></center>
+      <center><p> <%= link_to 'preview', @book.preview_link, class: "btn btn-primary btn-lg" %> </p></center>
+    </div>
+  </div>
+</div>
+
+
+
