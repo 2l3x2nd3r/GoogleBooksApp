@@ -1,0 +1,64 @@
+
+<div class="col-lg-6">
+  <h1>Sign Up</h1>
+
+  <br>
+
+  <%= form_for @user, class: "form-horizontal" do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <br>
+
+    <div class="form-group">
+      <%= f.label :username, class: "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :username %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <%= f.label :email, class: "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.text_field :email %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <%= f.label :password, class: "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.password_field :password %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "col-lg-4 control-label" %>
+      <div class="col-lg-8">
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <div class="col-lg-10">
+        <%= f.submit "Create Accont", class: 'btn btn-default' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

@@ -32,5 +32,7 @@ group :production do
 end
 
 gem 'googlebooks'
+gem 'amazon-ecs'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
+gem 'sorcery'
