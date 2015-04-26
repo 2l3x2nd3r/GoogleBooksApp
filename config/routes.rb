@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :password_resets, except: [:index, :destroy]
   resources :confirmations, only: :show
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users, only: :new
+  resources :users
 
   get 'users/:username' => 'users#show'
   
