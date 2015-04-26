@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   # External resources definitions
   authenticates_with_sorcery!
 
+  obfuscate_id spin: 120318
    # Virtual Attributes
   attr_accessor :password, :password_confirmation
 
