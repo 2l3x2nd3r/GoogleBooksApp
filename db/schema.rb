@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 20150427164841) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                                            null: false
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 2) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.text     "biography"
+    t.string   "location"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token"

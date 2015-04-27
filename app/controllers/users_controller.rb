@@ -1,12 +1,26 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-  before_action :get_user, only: [:show]
+  before_action :get_user, only: [:show, :edit, :update]
+  before_filter :require_login, :only => [:edit, :update]
+  before_filter :correct_user, :only => [:edit, :update]
 
   def show
   end
 
   def new
     @user = User.new
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update_attributes(user_params_update)
+      flash[:success] = "Profile updated."
+      redirect_to root_url
+    else
+      render 'edit'
+    end
   end
 
   def create
@@ -27,8 +41,17 @@ class UsersController < ApplicationController
 
   private
 
+  def correct_user
+    get_user
+    redirect_to(:root) unless current_user == @user
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def user_params_update
+    params.require(:user).permit(:username, :email, :firstname, :lastname, :biography, :location)
   end
 
   def get_user
