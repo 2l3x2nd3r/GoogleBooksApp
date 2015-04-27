@@ -4,7 +4,6 @@ class WelcomeController < ApplicationController
 
   def index
     key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
-    amazon_configuration
     user_ip = request.remote_ip
     @filters = ['no filter', 'partial', 'full', 'free-ebooks', 'paid-ebooks', 'ebooks']
     @keywords = ['no keyword', 'intitle', 'inauthor', 'inpublisher', 'subject', 'isbn']
@@ -30,13 +29,13 @@ class WelcomeController < ApplicationController
 
   private
 
-  def amazon_configuration
-    Amazon::Ecs.options = {
-      version: "2013-08-01",
-      service: "AWSECommerceService",
-      associate_tag: 'laconchaetutia',
-      AWS_access_key_id: 'AKIAINLAVDGVT4KKUPMA',
-      AWS_secret_key: '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'
-    }
-  end
+  # def amazon_configuration
+  #   Amazon::Ecs.options = {
+  #     version: "2013-08-01",
+  #     service: "AWSECommerceService",
+  #     associate_tag: 'laconchaetutia',
+  #     AWS_access_key_id: 'AKIAINLAVDGVT4KKUPMA',
+  #     AWS_secret_key: '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'
+  #   }
+  # end
 end
