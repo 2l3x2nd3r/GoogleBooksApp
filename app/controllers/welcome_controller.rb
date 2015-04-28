@@ -26,16 +26,4 @@ class WelcomeController < ApplicationController
       @books = []
     end
   end
-
-  private
-
-  # def amazon_configuration
-  #   Amazon::Ecs.options = {
-  #     version: "2013-08-01",
-  #     service: "AWSECommerceService",
-  #     associate_tag: 'laconchaetutia',
-  #     AWS_access_key_id: 'AKIAINLAVDGVT4KKUPMA',
-  #     AWS_secret_key: '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'
-  #   }
-  # end
 end
