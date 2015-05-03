@@ -16,7 +16,7 @@
       <br><br>
       <%= label_tag 'filtering: ', nil, class: 'label label-default' %>
       <%= select_tag :filtering, options_for_select(@filters), title: "partial -> Returns results where at least parts of the text are previewable.
-    full Only -> returns results where all of the text is viewable.
+    full -> Only returns results where all of the text is viewable.
     free-ebooks -> Only returns results that are free Google eBooks.
     paid-ebooks -> Only returns results that are Google eBooks with a price.
     ebooks -> Only returns results that are Google eBooks, paid or free." %>
@@ -42,7 +42,7 @@
       <% end %>
     </table>
     <% if @books != [] %>
-      <%= will_paginate @books, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0  %> 
+      <%= will_paginate @books, renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0  %>
     <% end %>
   </div>
 </div>

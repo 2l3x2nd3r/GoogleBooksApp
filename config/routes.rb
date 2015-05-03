@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'users/:username' => 'users#show'
+  put 'users/:username' => 'users#update'
+  get 'users/:username/edit' => 'users#edit'
   
 end

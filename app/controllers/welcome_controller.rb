@@ -10,7 +10,6 @@ class WelcomeController < ApplicationController
     if params[:search]
       if params[:filtering] == 'no filter'
         if params[:keyword] == 'no keyword'
-          # @books = Amazon::Ecs.item_search(params[:search], {search_index: 'All'}).items
           @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5)
         else
           @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5) 

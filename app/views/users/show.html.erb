@@ -4,7 +4,7 @@
     <div class="jumbotron">
       <center><p> <%= @user.username %> </p></center>
       <center><p> Email: <%= @user.email %> </p></center>
-      <center><p> <%= link_to 'Edit profile', "/users/#{current_user.username}", class: "btn btn-primary btn-lg" %> </p></center>
+      <center><p> <%= link_to 'Edit profile', "/users/#{current_user.username}/edit", class: "btn btn-primary btn-lg" %> </p></center>
       <center><p> <%= link_to 'Cancel Account', "/users/#{current_user.username}", class: "btn btn-primary btn-lg" %> </p></center>
     </div>
   </div>

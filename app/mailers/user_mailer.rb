@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "alextab93@gmail.com"
+  default from: "no-reply@developmentteam.com"
 
  def activation_needed_email(user)
     @user, @url = user, "googlebooks.herokuapp.com/confirmations/#{user.activation_token}"
