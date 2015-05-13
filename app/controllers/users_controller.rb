@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :get_user, only: [:show, :edit, :update]
   before_filter :require_login, :only => [:edit, :update]
-  before_filter :correct_user, :only => [:edit, :update]
 
   def show
   end
@@ -15,11 +14,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(user_params_update)
-      flash[:success] = "Profile updated."
-      redirect_to :root
+    current_user.assign_attributes(update_user_params)
+    if current_user.save
+      redirect_to "/users/#{current_user.username}"
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -35,23 +34,18 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy
-    logout
+    logout unless destroyed?
     redirect_to :root, notice: 'Logout!!!'
   end
 
   private
 
-  def correct_user
-    get_user
-    redirect_to(:root) unless current_user == @user
-  end
-
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
-  def user_params_update
-    params.require(:user).permit(:username, :firstname, :lastname, :biography, :location)
+  def update_user_params
+    params.require(:user).permit(:username, :email, :firstname, :lastname, :biography, :location, :password, :password_confirmation)
   end
 
   def get_user
