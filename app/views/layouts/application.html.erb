@@ -25,9 +25,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href=<%= root_path %>>Inicio <span class="sr-only">(current)</span></a></li>
-            <li><a href="../about">Acerca de</a></li>
-            <li><a href="../documentation">Documentación</a></li>
-            <li><a href="../contact">Contáctanos</a></li>
+            <li> <%= link_to 'Acerca de', :About %> </li>
+            <li> <%= link_to 'Documentación', :Documentation %> </li>
+            <li> <%= link_to 'Contáctanos', :Contact %> </li>
           </ul>
 
           <%= form_tag(:root, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
