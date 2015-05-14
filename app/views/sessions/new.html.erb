@@ -1,55 +1,31 @@
-<div class="col-lg-6">
-  <h1>Authentication</h1>
 
-  <br>
+<div id="background-image" style="background: url(http://www.natfonline.org/media/17628/keyboard2.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;"></div> 
+    <div id="background-overlay"></div>
 
-  <%= form_tag sessions_path do %>
+<div class="main-content" style="position:relative;">
+  <div class="container">
+    <%= form_tag sessions_path, class: "form-signin" do %>
+      
+      <h2 class="form-signin-heading">Inicia sesión</h2>
 
-    <br>
+      <%= label_tag :email, "Username or Email", class: "sr-only" %>
+      <%= text_field_tag :email, params[:email], class: "form-control", placeholder: "Username or Email" %>
 
-    <div class="form-group">
-      <%= label_tag :email, "Username or Email", class: "col-lg-3 control-label" %>
-      <div class="col-lg-8">
-        <%= text_field_tag :email, params[:email] %>
+      <%= label_tag :password, "Password", class: "sr-only" %>
+      <%= password_field_tag :password, params[:password], class: "form-control", placeholder: "Contraseña" %>
+
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+          Remember me
+        </label>
       </div>
-    </div>
 
-    <br>
-
-    <div class="form-group">
-      <%= label_tag :password, "Password", class: "col-lg-3 control-label" %>
-      <div class="col-lg-8">
-        <%= password_field_tag :password %>
-      </div>
-    </div>
-
-    <br>
-
-    <div class="form-group">
-      <div class="col-lg-10">
-        <div class="checkbox">
-          <label>
-            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-            Remember me
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <br>
-
-    <div class="form-group">
-      <div class="col-lg-10">
-        <%= submit_tag "Log in", class: 'btn btn-default' %>
-      </div>
-    </div>
-
-  <% end %>
-  <br> <br>
-  <div class="form-group">
-    <div class="col-lg-10">
+      <%= submit_tag "Log in", class: 'btn btn-lg btn-primary btn-block' %>
+      <br><p class="no-account">No tienes una cuenta? <%= link_to 'Registrate aquí ', :new_user %>gratis.</p>
       <%= link_to 'Reset password', new_password_reset_path, class: 'btn btn-default' %>
-    </div>
+    <% end %> 
   </div>
-  
 </div>
+
+    

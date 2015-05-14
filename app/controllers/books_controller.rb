@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  skip_before_action :require_login
+
   def show
     key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
     user_ip = request.remote_ip
