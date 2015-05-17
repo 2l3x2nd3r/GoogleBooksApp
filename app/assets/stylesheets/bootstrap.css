@@ -1129,6 +1129,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+.thumbnail:hover {
+  border: 5px solid #2E6DFF;
+}
 .img-rounded {
   border-radius: 6px;
 }

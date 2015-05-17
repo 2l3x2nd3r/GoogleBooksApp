@@ -1,5 +1,5 @@
-
-<br>
+<div id="background-image" style="background: url(http://eden.rutgers.edu/~emd156/555/images/21st%20cent%202.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div> 
+<div id="background-overlay"></div>
 
 <div class="container home-content" style="position:relative;" >
     <h1>Libros piratas y caros, pero de buena calidad y que se dejan leer bien.</h1>
@@ -14,15 +14,15 @@
     <% @books.each do |book| %> 
         <div class="book-result col-md-15 col-lg-15 col-sm-6 col-xs-6">
           <div class="result-container">
-            <a class="link-libro" href="">
-              <figure>
-                <% if book.image_link %>
-                  <%= image_tag book.image_link(zoom: 5), class: "img-responsive", size: "100x100" %>
-                <% else %>
-                  <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "img-responsive", size: "16x10" %>
+            <figure>
+              <% if book.image_link %>
+                <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265" %>
+              <% else %>
+                <%= link_to books_show_path(isbn: book.isbn, title: book.title) do %>
+                  <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
                 <% end %>
-              </figure>
-            </a>
+              <% end %>
+            </figure>
             <div class="book-result-bottom">
               <%= link_to book.title, books_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
               <div class="book-year"><%= book.published_date %></div>

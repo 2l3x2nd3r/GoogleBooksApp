@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'annexes/about', as: :About
-  get 'annexes/documentation', as: :Documentation
-  get 'annexes/contact', as: :Contact
+  get '/about' => 'annexes#about', as: :About
+  get '/documentation' => 'annexes#documentation', as: :Documentation
+  get '/contact' => 'annexes#contact', as: :Contact
   
   root 'welcome#index'
+  get '/home' => 'welcome#home', as: :Home
   
   get 'books/show'
   
@@ -17,7 +18,5 @@ Rails.application.routes.draw do
   put 'users/:username' => 'users#update'
   delete 'users/:username' => 'users#destroy'
   get 'users/:username/edit' => 'users#edit'
-
-  
   
 end
