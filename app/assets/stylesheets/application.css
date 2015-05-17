@@ -243,10 +243,11 @@ body {
   border: 5px solid #2E6DFF;
 }
 
-@media (min-width: 992px)
-.link-libro {
-  width: 180px;
-  height: 265px;
+@media (min-width: 992px){
+  .link-libro {
+    width: 180px;
+    height: 265px;
+  }
 }
 
 figure {
@@ -366,12 +367,13 @@ a {
   overflow: hidden;
 }
 
-@media (min-width: 992px)
-.book-tags a {
-  margin-top: 10px;
-  margin-right: 3px;
-  font-size: .85em;
-  padding: 5px 7px;
+@media (min-width: 992px){
+  .book-tags a {
+    margin-top: 10px;
+    margin-right: 3px;
+    font-size: .85em;
+    padding: 5px 7px;
+  }
 }
 
 .book-tags a {
