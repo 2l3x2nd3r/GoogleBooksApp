@@ -25,10 +25,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      puts "aqui entro coletico"
       redirect_to :root, notice: 'your proccess of singup is almost complete redirect to email to activate'
     else
+      puts "aqui entro coletico"
       flash[:error] = 'your proccess singup can\'t complete'
-      render :singup
+      render :new
     end
   end
 

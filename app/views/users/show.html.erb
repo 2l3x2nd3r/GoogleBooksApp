@@ -1,8 +1,9 @@
 
-      <center><p> <%= "#{current_user.firstname} #{current_user.lastname}" %> </p></center>
-      <center><p> <%= current_user.biography %> </p></center>
-      <center><p> <%= current_user.location %> </p></center>
-      <center><p> <%= current_user.username %> </p></center>
-      <center><p> Email: <%= current_user.email %> </p></center>
-      <center><p> <%= link_to 'Edit profile', "/users/#{current_user.username}/edit", class: "btn btn-primary btn-lg" %> </p></center>
-      <center><p> <%= link_to 'Cancel Account', "/users/#{current_user.username}", class: "btn btn-primary btn-lg", method: :delete %> </p></center>
+<center><p> <%= image_tag current_user.avatar.url(:medium), class: "thumbnail" %> </p></center>
+<center><p> <%= "#{current_user.firstname} #{current_user.lastname}" %> </p></center>
+<center><p> <%= current_user.biography %> </p></center>
+<center><p> <%= current_user.location %> </p></center>
+<center><p> <%= current_user.username %> </p></center>
+<center><p> Email: <%= current_user.email %> </p></center>
+<center><p> <%= link_to 'Edit profile', "/users/#{current_user.username}/edit", class: "btn btn-primary btn-lg" %> </p></center>
+<center><p> <%= link_to 'Cancel Account', "/users/#{current_user.username}", class: "btn btn-primary btn-lg", method: :delete %> </p></center>

@@ -60,6 +60,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
+              <%= image_tag current_user.avatar.url(:icon) %>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"> <%= current_user.username %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -69,11 +70,11 @@
                   <li class="divider"></li>
                   <li><%= link_to 'Cerrar sesión', session_path(current_user), method: :delete %></li>
                 </ul>
-              </li>          
+              </li>
             <% else %>
               <li><%= link_to 'Registrate', :Singup %></li>
               <li><%= link_to 'Inicia Sesión', :Login %></li>
-            <% end %>
+            <% end %> 
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

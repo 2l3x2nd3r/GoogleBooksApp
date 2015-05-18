@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
     styles: { medium: "300x300>", thumb: "100x100>", icon: "50x50" },
     default_url: "https://en.opensuse.org/images/0/0b/Icon-user.png",
     dropbox_credentials: Rails.root.join("#{Rails.root}/config/dropbox.yml"),
-    dropbox_options: { path: proc { |style| "files/avatars/#{id}/#{avatar.original_name}" } },
+    dropbox_options: { path: proc { |style| "files/avatars/#{id}/#{avatar.original_filename}" } },
     unique_filename: true 
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # Callbacks
   before_save :format_attributes

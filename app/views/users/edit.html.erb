@@ -1,5 +1,4 @@
-<div class="col-lg-6">
-  <div class="well bs-component">
+
     <%= form_for current_user, html: { multipart: true, class: "edit_user form-horizontal" } do |f| %>
       <fieldset>
         <legend>Edit</legend>
@@ -17,7 +16,7 @@
         <div class="form-group">
           <%= f.label :avatar, class: "col-lg-2 control-label" %>
           <div class="col-lg-8">
-            <%= f.file_field :avatar, class: "form-control" %>
+            <%= f.file_field :avatar %>
           </div>
         </div>
         
@@ -84,5 +83,3 @@
         </div>
       </fieldset>
     <% end %>
-  </div>
-</div>
