@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   
   resources :password_resets, except: [:index, :destroy]
   resources :confirmations, only: :show
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :sessions, only: [:create, :destroy]
+  resources :users, except: [:new]
+
+  get '/singup' => 'users#new', as: :Singup
+  get '/singin' => 'sessions#new', as: :Signin
 
   get 'users/:username' => 'users#show'
   put 'users/:username' => 'users#update'
