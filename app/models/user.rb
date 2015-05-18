@@ -13,6 +13,15 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 3 }, on: :create
   validates :password, confirmation: true, on: :create
 
+  has_attached_file :avatar,
+    storage: :dropbox,
+    styles: { medium: "300x300>", thumb: "100x100>", icon: "50x50" },
+    default_url: "https://en.opensuse.org/images/0/0b/Icon-user.png",
+    dropbox_credentials: Rails.root.join("#{Rails.root}/config/dropbox.yml"),
+    dropbox_options: { path: proc { |style| "files/avatars/#{id}/#{avatar.original_name}" } },
+    unique_filename: true 
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   # Callbacks
   before_save :format_attributes
 

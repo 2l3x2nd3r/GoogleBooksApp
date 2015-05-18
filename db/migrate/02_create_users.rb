@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :reset_password_token_expires_at
       t.datetime :reset_password_email_sent_at
     end
-
+    
     add_index :users, :email, unique: true
     add_index :users, :remember_me_token
     add_index :users, :activation_token

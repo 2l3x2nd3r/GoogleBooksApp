@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427164841) do
+ActiveRecord::Schema.define(version: 20150518213433) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                                            null: false
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 20150427164841) do
     t.string   "lastname"
     t.text     "biography"
     t.string   "location"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["activation_token"], name: "index_users_on_activation_token"
