@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
 
   get '/singup' => 'users#new', as: :Singup
-  get '/singin' => 'sessions#new', as: :Signin
+  get '/login' => 'sessions#new', as: :Login
 
   get 'users/:username' => 'users#show'
   put 'users/:username' => 'users#update'
