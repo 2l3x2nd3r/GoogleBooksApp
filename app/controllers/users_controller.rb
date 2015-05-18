@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       redirect_to :root, notice: 'your proccess of singup is almost complete redirect to email to activate'
     else
       flash[:error] = 'your proccess singup can\'t complete'
-      render :new
+      render :singup
     end
   end
 
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:avatar, :username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
   def update_user_params
