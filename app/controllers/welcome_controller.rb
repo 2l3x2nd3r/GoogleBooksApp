@@ -5,8 +5,11 @@ class WelcomeController < ApplicationController
   def index
     key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
     user_ip = request.remote_ip
+    if current_user
+      redirect_to :Home
+    end
     if params[:search]
-      @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5)
+      @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10)
     else
       @books = []
     end
@@ -20,15 +23,15 @@ class WelcomeController < ApplicationController
     if params[:search]
       if params[:filtering] == 'no filter'
         if params[:keyword] == 'no keyword'
-          @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5)
+          @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10)
         else
-          @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5) 
+          @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
         end
       else
         if params[:keyword] != 'no keyword'
-          @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5) 
+          @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
         else
-          @books = GoogleBooks.search(params[:search], {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 5) 
+          @books = GoogleBooks.search(params[:search], {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
         end
       end
     else

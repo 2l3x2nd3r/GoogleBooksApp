@@ -2,87 +2,37 @@
 <div id="background-overlay"></div>
 
 <div class="container-fluid collapse navbar-collapse" style="position:relative;background:#292c2f;" id="search-book-div">
-  <div class="container" style="margin-top:10;margin-bottom:10px;">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <p class="term">Término de Busqueda:</p>
-        <div class="input-group" style="width:100%;margin-bottom:5px;">
-            <input type="text" class="form-control" placeholder="Busca un libro" style="height:34px;">
+  <%= form_tag(:Home, :method => "get", id: "search-form-home") do %>
+    <div class="container" style="margin-top:10;margin-bottom:10px;">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <p class="term">Término de Busqueda:</p>
+          <div class="input-group" style="width:100%;margin-bottom:5px;">
+            <%= text_field_tag :search, params[:search], class: "form-control", style: "height:34px;", placeholder: "Busca un libro" %>
             <span class="input-group-btn">
-              <button class="btn btn-primary btn-block" type="submit">Buscar</button>
+              <%= submit_tag "Buscar", :name => nil, class: 'btn btn-primary btn-block' %>
             </span>           
+          </div>
+        </div>
+      </div>
+      <div class="row" id="filters">
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <p>Palabra Clave</p>
+          <%= select_tag :keyword, options_for_select(@keywords) %>         
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <p>Filtro</p>
+          <%= select_tag :filtering, options_for_select(@filters) %>         
         </div>
       </div>
     </div>
-    <div class="row" id="filters">
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <p>Género</p>
-        <select name="genre">
-          <option value="all" selected="selected">Todos</option>
-          <option>Acción</option>
-          <option>Drama</option>
-          <option>Suspenso</option>
-          <option>Terror</option>
-          <option>Horror</option>
-          <option>SciFi</option>
-          <option>Comedia</option>
-          <option>Aventura</option>
-          <option>Cine negro</option>
-        </select>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <p>Estado</p>
-        <select>
-          <option selected="selected">Todos</option>
-        </select>         
-      </div>
-      <div class="clearfix visible-sm"></div>
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <p>Catálogo</p>
-        <select>
-          <option selected="selected">Todos</option>
-          <option>Google Books</option>
-          <option>Libros.com</option>
-        </select>         
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-6">
-        <p>Ordenar por</p>
-        <select>
-          <option selected="selected">Todos</option>
-          <option>Puntaje</option>
-          <option>Autor</option>
-        </select>         
-      </div>
-    </div>
-  </div>
+  <% end %>
 </div>
 
 <div class="container" style="position:relative;">
   <h1 id="results-h">Resultados</h1>
 </div>
 
-<div id="results-frame" class="container" style="position:relative;">
-  <div class="row">
-    <% @books.each do |book| %> 
-        <div class="book-result col-md-15 col-lg-15 col-sm-6 col-xs-6">
-          <div class="result-container">
-            <figure>
-              <% if book.image_link %>
-                <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265" %>
-              <% else %>
-                <%= link_to books_show_path(isbn: book.isbn, title: book.title) do %>
-                  <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
-                <% end %>
-              <% end %>
-            </figure>
-            <div class="book-result-bottom">
-              <%= link_to book.title, books_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
-              <div class="book-year"><%= book.published_date %></div>
-              <div class="book-tags">
-              </div>
-            </div>
-          </div>
-        </div>
-    <% end %>
-  </div>
-</div>
+<% if @books != [] %>
+  <%= render 'show_results' %>
+<% end %>

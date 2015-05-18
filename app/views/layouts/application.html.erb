@@ -45,9 +45,9 @@
             <li> <%= link_to 'Contáctanos', :Contact %> </li>
           </ul>
 
-          <%= form_tag(:root, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
+          <%= form_tag(current_user ? :Home : :root, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
             <div class="form-group">
-              <%= text_field_tag :search, params[:search], placeholder: "Search to books", class: "form-control", style: "width:290px;" %>
+              <%= text_field_tag :search, params[:search], placeholder: "Busca un libro", class: "form-control", style: "width:290px;" %>
             </div>
             <%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
           <% end %>
@@ -81,7 +81,7 @@
           <a href="#"><i class="fa fa-facebook"></i></a>
           <a href="#"><i class="fa fa-twitter"></i></a>
           <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-github"></i></a>
+          <a href="https://github.com/2l3x2nd3r/software-design-project" target="_blank"><i class="fa fa-github"></i></a>
         </div>
         <div class="footer-left">
           <p class="footer-links">
