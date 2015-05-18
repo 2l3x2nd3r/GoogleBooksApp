@@ -28,6 +28,12 @@ body {
   /*border:1px dashed white;*/
 }
 
+form p{
+ margin-top: 10px;
+ color:white;
+ text-align: justify;
+}
+
 .container{
   position: relative;
 }
@@ -395,13 +401,149 @@ a {
   margin: 0 auto;
 }
 
-footer{
-  position:fixed;
-  bottom:0;
+#book-info *{
+  color: white;
+}
+
+#book-info{
+  text-align: left;
+  float: left;
+}
+
+#book-poster *{
+  position: relative;
+  margin:auto;
+}
+#book-poster img{
+  margin:auto;
+  margin-bottom: 5px;
+}
+
+#book-poster button{
+  width: 100%;
+  max-width: 240px;
+  margin-left: 10px;
+}
+
+#book-info h1{
+  margin-top: -2px;
+  font-size: 2.5em;
+  margin-bottom: 12px;
+  line-height: 42px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 2px rgba(0,0,0,.4);
+  font-family: Arimo,Arial,Helvetica,"Lucida Grande",sans-serif;
+}
+
+#book-info p{
+  margin-top: 20px;
+}
+
+#book-info h2 {
+  line-height: 24px;
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 2px rgba(0,0,0,.4);
+  margin: 0;
+}
+
+#synopsis h3 {
+  font-size: 1.35em;
+  font-weight: bold;
+  text-shadow: 0 2px 2px rgba(0,0,0,.4);
+  text-align: left;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.bottom-info{
+  margin-top: 25px;
+}
+
+#book-info .rating-row {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px){
+  #book-info .rating-row {
+    margin-bottom: 5px; margin-left: 17%;
+  }
+  #book-info p{
+    margin-left: 17%;
+  }
+}
+
+#book-info span{
+  font-weight: 650;
+  font-size: 1.15em;
+}
+
+.rating-row .icon{
+  width: 75px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.blue{
+  color: #337ab7;
+}
+
+.rating-row .text{
+  vertical-align: middle;
+}
+
+#synopsis p {
+  color: #919191;
+  line-height: 24px;
+  text-align: justify;
+  text-justify: inter-word;
+  display: block;
+}
+
+#book-info p a{
+  background: rgba(27,27,35,.4);
+  padding: 5px 12px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.16);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  font-size: .8em;
+  color: #fff;
+  transition: color .15s ease-in-out;
+  -moz-transition: color .15s ease-in-out;
+  -webkit-transition: color .15s ease-in-out;
+}
+#mobile-book-info{
+  margin-left: 17px;
+  color: white;
+}
+
+#mobile-book-info h1 {
+  font-size: 1.3em;
+  margin-bottom: 10px !important;
+  line-height: 24px;
+}
+
+#mobile-book-info h2 {
+  line-height: 10px;
+  font-size: 1em;
+  margin-bottom: 15px !important;
+}
+
+#mobile-book-info h1, #mobile-book-info h2 {
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 2px 2px rgba(0,0,0,.4);
+  margin: 0;
 }
 
 .footer-distributed{
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
   box-sizing: border-box;
   width: 100%;
   text-align: left;
