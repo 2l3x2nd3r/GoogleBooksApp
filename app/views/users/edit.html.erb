@@ -1,10 +1,23 @@
+<div id="background-image" style="background: url(http://p1.pichost.me/640/64/1889210.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div> 
+<div id="background-overlay"></div>
 
-    <%= form_for current_user, html: { multipart: true, class: "edit_user form-horizontal" } do |f| %>
-      <fieldset>
-        <legend>Edit</legend>
+<div class="container">
+  <h1>Editar Perfil</h1>
+  <hr>
+  <%= form_for current_user, html: { multipart: true, class: "form-horizontal" } do |f| %>
+    <div class="row">
+       <div class="col-md-3">
+        <div class="text-center">
+          <%= image_tag current_user.avatar.url(:thumb), class: "avatar img-circle" %>
+          <h6>Sube una foto diferente...</h6>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+      <div class="col-md-9 personal-info">
         <% if current_user.errors.any? %>
-          <div class="error_messages">
-            <h2>Form is invalid</h2>
+          <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a> 
+            <i class="fa fa-coffee"></i>
             <ul>
               <% for message in current_user.errors.full_messages %>
                 <li><%= message %></li>
@@ -12,74 +25,74 @@
             </ul>
           </div>
         <% end %>
+        
+        <h3>Información Personal</h3>
 
         <div class="form-group">
-          <%= f.label :avatar, class: "col-lg-2 control-label" %>
-          <div class="col-lg-8">
-            <%= f.file_field :avatar %>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <%= f.label :username, class: "col-lg-2 control-label" %>
+          <%= f.label 'Nombre de Usuario', class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.text_field :username, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :email, class: "col-lg-2 control-label" %>
-          <div class="col-lg-8">
-            <%= f.text_field :email, class: "form-control" %>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <%= f.label "First name", class: "col-lg-2 control-label" %>
+          <%= f.label "Nombre", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.text_field :firstname, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label "Last name", class: "col-lg-2 control-label" %>
+          <%= f.label "Apellido", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.text_field :lastname, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :biography, class: "col-lg-2 control-label" %>
+          <%= f.label "Correo Electronico", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Biografia", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.text_area :biography, size: "19x10", class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :location, class: "col-lg-2 control-label" %>
+          <%= f.label "Ubicacion", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.text_field :location, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :password, class: "col-lg-2 control-label" %>
+          <%= f.label "Contraseña", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.password_field :password, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <%= f.label :password_confirmation, class: "col-lg-2 control-label" %>
+          <%= f.label "Confirmar Contraseña", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
             <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
         </div>
 
         <div class="form-group">
-          <div class="col-lg-8 col-lg-offset-2">
-            <%= f.submit "Edit Accont", class: 'btn btn-default' %>
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <%= f.submit "Guardar Cambios", class: 'btn btn-primary' %>
+            <span></span>
+            <%= link_to "Cancelar", "/users/#{current_user.username}", class: 'btn btn-default' %>
           </div>
         </div>
-      </fieldset>
-    <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

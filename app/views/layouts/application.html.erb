@@ -60,13 +60,13 @@
 
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= image_tag current_user.avatar.url(:icon), size: '50x50' %></li>
+              <li><%= image_tag current_user.avatar.url(:icon), size: '50x50', class: "avatar img-circle" %></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"> <%= current_user.username %> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to 'Ver Perfil', "/users/#{current_user.username}" %></li>
+                  <li><%= link_to 'Editar Perfil', "/users/#{current_user.username}/edit" %></li>
                   <li><a href="#">Acción</a></li>
-                  <li><a href="#">Otra Acción</a></li>
                   <li class="divider"></li>
                   <li><%= link_to 'Cerrar sesión', session_path(current_user), method: :delete %></li>
                 </ul>
@@ -79,8 +79,9 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </header>
-
+    
     <%= yield %>
+
     <div id="footer">
       <footer class="footer-distributed">
         <div class="container">

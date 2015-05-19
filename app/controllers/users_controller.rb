@@ -25,11 +25,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      puts "aqui entro coletico"
-      redirect_to :root, notice: 'your proccess of singup is almost complete redirect to email to activate'
+      redirect_to :root, notice: 'Tu proceso de registro esta casi completado, ve a tu badeja de entrada para completarlo'
     else
-      puts "aqui entro coletico"
-      flash[:error] = 'your proccess singup can\'t complete'
+      flash[:error] = 'Tu proceso de registro no pudo ser completado'
       render :new
     end
   end
@@ -37,7 +35,7 @@ class UsersController < ApplicationController
   def destroy
     current_user.destroy
     logout unless destroyed?
-    redirect_to :root, notice: 'Logout!!!'
+    redirect_to :root
   end
 
   private

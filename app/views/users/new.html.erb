@@ -3,11 +3,12 @@
 <div class="main-content" style="position:relative;">
   <div class="container">
     <%= form_for @user, html: { class: "form-signin" } do |f| %>
-      <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
+      <% if current_user.errors.any? %>
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
           <ul>
-            <% for message in @user.errors.full_messages %>
+            <% for message in current_user.errors.full_messages %>
               <li><%= message %></li>
             <% end %>
           </ul>

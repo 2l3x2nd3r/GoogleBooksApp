@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # Method
   private
   def not_authenticated
-    redirect_to :root, notice: 'you are visitor to have access this resource must be authenticated'
+    redirect_to :root, notice: 'Eres visitante, para tener acceso a esta seccion debes autenticarte'
   end
 
   def not_reseteable
