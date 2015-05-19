@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518213433) do
+ActiveRecord::Schema.define(version: 20150519060132) do
+
+  create_table "books", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "authors"
+    t.text     "description"
+    t.string   "categories"
+    t.string   "isbn"
+    t.string   "publisher"
+    t.datetime "published_date"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
+  end
+
+  add_index "books", ["user_id"], name: "index_books_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                                            null: false

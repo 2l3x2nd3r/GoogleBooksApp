@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
 
   # Validations
+  has_many :books
+
   validates :username, :email, :password, presence: true, on: :create
   validates :username, uniqueness: true
   validates :email, uniqueness: true, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\z/, message: "must be a valid email" }
@@ -20,7 +22,7 @@ class User < ActiveRecord::Base
     dropbox_credentials: Rails.root.join("#{Rails.root}/config/dropbox.yml"),
     dropbox_options: { path: proc { |style| "files/avatars/#{id}/#{avatar.original_filename}" } },
     unique_filename: true 
-  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :avatar, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # Callbacks
   before_save :format_attributes

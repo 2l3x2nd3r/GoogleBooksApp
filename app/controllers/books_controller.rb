@@ -1,13 +1,49 @@
 class BooksController < ApplicationController
-  skip_before_action :require_login
+  skip_before_action :require_login, only: [:show]
+  before_action :get_book, only: [:show, :edit, :update]
+  before_filter :require_login, only: [:edit, :update, :new, :create, :destroy]
 
   def show
-    key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
-    user_ip = request.remote_ip
-    if params[:isbn]
-      @book = GoogleBooks.search("isbn:#{params[:isbn]}", {count: 15, api_key: key}, user_ip).first
+  end
+
+  def new
+    @book = Book.new
+  end
+
+  def edit
+  end
+
+  def update
+    @book.assign_attributes(book_params)
+    if @book.save
+      redirect_to "/users/#{current_user.username}"
     else
-      @book = GoogleBooks.search("intitle:#{params[:title]}", {count: 15, api_key: key}, user_ip).first
+      render :edit
     end
+  end
+
+  def create
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to :root, notice: 'El libro ha sido creado'
+    else
+      flash[:error] = 'No se ha podido crear el libro'
+      render :new
+    end
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to :root
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:image, :pdf, :title, :authors, :description, :categories, :isbn, :publisher, :published_date)
+  end
+
+  def get_book
+    
   end
 end

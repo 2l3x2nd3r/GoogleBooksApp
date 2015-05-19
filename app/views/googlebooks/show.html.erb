@@ -11,11 +11,12 @@
 
     <div id="book-poster" class="col-lg-3 col-md-5 col-sm-5 col-xs-12">
       <% if @book.image_link %>
-        <%= image_tag @book.image(:thumb), class: "img-responsive thumbnail", size: "2000x285" %>
+        <%= image_tag @book.image_link(zoom: 5), class: "img-responsive thumbnail", size: "2000x285" %>
       <% else %>
         <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "img-responsive thumbnail", size: "2000x285" %>
       <% end %>
-      <%= link_to 'Leer Libro', @book.pdf, class: "btn btn-primary hidden-xs hidden-md", target: "_blank" %>
+      <%= link_to 'Ir a mas detalles', @book.info_link, class: "btn btn-primary hidden-xs hidden-md", target: "_blank" %> <br><br>
+      <%= link_to 'Leer Libro', @book.preview_link, class: "btn btn-primary hidden-xs hidden-md", target: "_blank" %>
     </div>
 
     <div id="book-info" class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
@@ -42,9 +43,18 @@
           <span class="icon glyphicon glyphicon-barcode blue"></span>
           <span class="text"><%= @book.isbn %></span>
         </div>
+        <div class="rating-row">
+          <span class="icon glyphicon glyphicon-hand-up blue"></span>
+          <span class="text"><%= @book.average_rating %></span>
+        </div>
+        <div class="rating-row">
+          <span class="icon glyphicon glyphicon-eye-open blue"></span>
+          <span class="text"><%= @book.language %></span>
+        </div>
       </div>
+
     </div>
-    
+
     <div id="synopsis" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
       <h3>Sinopsis</h3>
       <p><%= @book.description %></p>

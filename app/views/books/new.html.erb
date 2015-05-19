@@ -1,0 +1,93 @@
+<div id="background-image" style="background: url(http://p1.pichost.me/640/64/1889210.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div> 
+<div id="background-overlay"></div>
+
+<div id="background-overlay"></div>
+<div class="container">
+  <h1>Crea tu libro</h1>
+  <hr>
+  <%= form_for @book, html: { multipart: true, class: "form-horizontal" } do |f| %>
+    <div class="row">
+       <div class="col-md-3">
+        <div class="text-center">
+          <h6>Sube una imagen...</h6>
+          <%= f.file_field :image %>
+          <h6>Sube el pdf...</h6>
+          <%= f.file_field :pdf %>
+        </div>
+      </div>
+      <div class="col-md-9 personal-info">
+        <% if @book.errors.any? %>
+          <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a> 
+            <i class="fa fa-coffee"></i>
+            <ul>
+              <% for message in @book.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+        <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Información del Libro</h3>
+
+        <div class="form-group">
+          <%= f.label 'Titulo', class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Autores", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :authors, class: "form-control", placeholder: 'separados por ,' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Descripcion", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_area :description, size: "19x10", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Categorias", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :categories, class: "form-control", placeholder: 'separados por ,' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "isbn", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :isbn, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Editorial", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.text_field :publisher, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Fecha de publicacion", class: "col-lg-3 control-label" %>
+          <div class="col-lg-8">
+            <%= f.datetime_field :published_date, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <%= f.submit "Crear Libro", class: 'btn btn-primary' %>
+            <span></span>
+            <%= link_to "Cancelar", "/home", class: 'btn btn-default' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

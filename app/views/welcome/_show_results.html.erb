@@ -5,7 +5,7 @@
           <div class="result-container">
             <figure>
               <% if book.image_link %>
-                <%= link_to books_show_path(isbn: book.isbn, title: book.title) do %>
+                <%= link_to googlebooks_show_path(isbn: book.isbn, title: book.title) do %>
                   <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265" %>
                 <% end %>
               <% else %>
@@ -15,7 +15,7 @@
               <% end %>
             </figure>
             <div class="book-result-bottom">
-              <%= link_to book.title, books_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
+              <%= link_to book.title, googlebooks_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
               <div class="book-year"><%= book.published_date %></div>
               <div class="book-tags">
               </div>
