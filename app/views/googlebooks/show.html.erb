@@ -11,9 +11,9 @@
 
     <div id="book-poster" class="col-lg-3 col-md-5 col-sm-5 col-xs-12">
       <% if @book.image_link %>
-        <%= image_tag @book.image_link(zoom: 5), class: "img-responsive thumbnail", size: "2000x285" %>
+        <%= image_tag @book.image_link(zoom: 5), class: "img-responsive thumbnail", size: "200x285" %>
       <% else %>
-        <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "img-responsive thumbnail", size: "2000x285" %>
+        <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "img-responsive thumbnail", size: "200x285" %>
       <% end %>
       <%= link_to 'Ir a mas detalles', @book.info_link, class: "btn btn-primary hidden-xs hidden-md", target: "_blank" %> <br><br>
       <%= link_to 'Leer Libro', @book.preview_link, class: "btn btn-primary hidden-xs hidden-md", target: "_blank" %>

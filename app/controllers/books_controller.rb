@@ -4,6 +4,7 @@ class BooksController < ApplicationController
   before_filter :require_login, only: [:edit, :update, :new, :create, :destroy]
 
   def show
+    @book = Book.find(1)
   end
 
   def new
