@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
   has_many :books
 
+  obfuscate_id
+  
   # Virtual Attributes
   attr_accessor :password, :password_confirmation
 

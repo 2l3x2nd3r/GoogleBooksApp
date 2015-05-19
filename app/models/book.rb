@@ -1,6 +1,8 @@
 class Book < ActiveRecord::Base
   belongs_to :user
 
+  obfuscate_id
+
   validates :title, presence: true, on: :create
   validates :title, :isbn, uniqueness: true
 
