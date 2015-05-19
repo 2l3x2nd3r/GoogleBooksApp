@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
   # External resources definitions
   authenticates_with_sorcery!
+  has_many :books
 
   # Virtual Attributes
   attr_accessor :password, :password_confirmation
 
   # Validations
-  has_many :books
-
   validates :username, :email, :password, presence: true, on: :create
   validates :username, uniqueness: true
   validates :email, uniqueness: true, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\z/, message: "must be a valid email" }

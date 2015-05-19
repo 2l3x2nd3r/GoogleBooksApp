@@ -1,14 +1,14 @@
 class BooksController < ApplicationController
   skip_before_action :require_login, only: [:show]
-  before_action :get_book, only: [:show, :edit, :update]
   before_filter :require_login, only: [:edit, :update, :new, :create, :destroy]
+  before_action :get_user, only: [:new, :create]
+  before_action :get_book, only: [:show, :edit, :update, :destroy]
 
   def show
-    @book = Book.find(1)
   end
 
   def new
-    @book = Book.new
+    @book = @user.books.new
   end
 
   def edit
@@ -24,7 +24,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = @user.books.new(book_params)
     if @book.save
       redirect_to :root, notice: 'El libro ha sido creado'
     else
@@ -40,11 +40,16 @@ class BooksController < ApplicationController
 
   private
 
+  def get_user
+    @user = User.find(params[:user_id])
+  end
+
   def book_params
     params.require(:book).permit(:image, :pdf, :title, :authors, :description, :categories, :isbn, :publisher, :published_date)
   end
 
   def get_book
-    
+    get_user
+    @book = @user.books.find(params[:id])
   end
 end
