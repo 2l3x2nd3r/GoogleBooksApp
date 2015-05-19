@@ -1,9 +1,58 @@
+<div id="background-image" style="background: url(http://p1.pichost.me/640/64/1889210.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div> 
+<div id="background-overlay"></div>
 
-<center><p> <%= image_tag current_user.avatar.url(:medium), class: "thumbnail" %> </p></center>
-<center><p> <%= "#{current_user.firstname} #{current_user.lastname}" %> </p></center>
-<center><p> <%= current_user.biography %> </p></center>
-<center><p> <%= current_user.location %> </p></center>
-<center><p> <%= current_user.username %> </p></center>
-<center><p> Email: <%= current_user.email %> </p></center>
-<center><p> <%= link_to 'Edit profile', "/users/#{current_user.username}/edit", class: "btn btn-primary btn-lg" %> </p></center>
-<center><p> <%= link_to 'Cancel Account', "/users/#{current_user.username}", class: "btn btn-primary btn-lg", method: :delete %> </p></center>
+<div class="main-content">
+  <div class="container">
+    <div class="info-page">
+      <div class="row">
+        <div class="col-lg-9 col-md-9"> 
+          <h1><%= current_user.username %><em style="color: #fff;margin:0 auto;">(<%= current_user.location %>)</em></h1>
+          <h4><%= current_user.email %></h4> 
+        </div>
+        <div class="col-lg-3 col-md-3"> 
+          <%= link_to 'Editar', "/users/#{current_user.username}/edit", class: "btn btn-primary" %>
+          <%= link_to 'Cancelar Cuenta', "/users/#{current_user.username}", class: "btn btn-danger", method: :delete, data: { confirm: "Estas Seguro?" }  %>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> 
+          <h2>Biografía</h2>
+          <div id="user-biography"><%= current_user.biography %></div>
+        </div>
+        <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1"> 
+          <h2>Estadísticas</h2>
+          <div class="profile-container"> 
+            <p> <span>ID de usuario:</span> 568980 </p> 
+            <p> <span>Se unió:</span> Enero 7 de 2014 - 2:31 pm </p> 
+            <p> <span>Ultima vista:</span> Mayo 19 de 2015 - 12:07 pm </p> 
+            <p> <span>Libros descargados:</span> 76 </p> 
+            <p> <span>Solicitudes:</span> 1 </p>  
+          </div> 
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+          <div class="hidden-xs hidden-sm"> 
+            <%= image_tag current_user.avatar.url(:medium), class: "profile-img img-responsive pull-right" %><br>
+            <h4><%= "#{current_user.firstname} #{current_user.lastname}" %></h4>
+          </div> 
+        </div>
+      </div>
+
+      <div class="row"> 
+        <div class="col-xs-20"> 
+          <div class="line"></div> 
+          <h2>Libros recientes</h2> 
+          <div class="row-fluid recent-downloads">  
+            <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"> 
+              <a href="https://yts.to/movie/project-almanac-2014" title="Project Almanac (2014)"> 
+                <img src="https://s.ynet.io/assets/images/movies/project_almanac_2014/medium-cover.jpg" alt="Project Almanac (2014) download"> 
+              </a> 
+            </div>  
+          </div> 
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

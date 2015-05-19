@@ -4,11 +4,8 @@ class ConfirmationsController < ApplicationController
   def show
     if @user = User.load_from_activation_token(params[:id])
       @user.activate!
-      if auto_login(@user)
-        redirect_to :Home, notice: 'Bienvenido'
-      else
-        redirect_to :root, notice: 'Tu cuenta ha diso activada, puedes iniciar sesión'
-      end    
+      auto_login(@user)
+      redirect_to :root, notice: 'Tu cuenta ha diso activada, Bienvenido'   
     else 
       redirect_to :root, error: 'Token Invalido'
     end
