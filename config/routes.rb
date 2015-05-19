@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :password_resets, except: [:index, :destroy]
   resources :confirmations, only: :show
   resources :sessions, only: [:create, :destroy]
-  resources :users, except: [:new]
-  resources :books
+  resources :users, except: [:new] do
+    resources :books
+  end
 
   get '/singup' => 'users#new', as: :Singup
   get '/login' => 'sessions#new', as: :Login
