@@ -8,12 +8,12 @@
     <div class="info-page">
       <div class="row">
         <div class="col-lg-9 col-md-9"> 
-          <h1><%= current_user.username %><em style="color: #fff;margin:0 auto;">(<%= current_user.location %>)</em></h1>
-          <h4><%= current_user.email %></h4> 
+          <h1><%= @user.username %><em style="color: #fff;margin:0 auto;">(<%= @user.location %>)</em></h1>
+          <h4><%= @user.email %></h4> 
         </div>
         <div class="col-lg-3 col-md-3"> 
-          <%= link_to 'Cancelar Cuenta', "/users/#{current_user.username}", class: "btn btn-danger", style: 'float:right;', method: :delete, data: { confirm: "Estas Seguro?" } %>
-          <%= link_to 'Editar', "/users/#{current_user.username}/edit", style: 'margin-left:50px;', class: "btn btn-success" %>
+          <%= link_to 'Cancelar Cuenta', "/users/#{@user.username}", class: "btn btn-danger", style: 'float:right;', method: :delete, data: { confirm: "Estas Seguro?" } %>
+          <%= link_to 'Editar', "/users/#{@user.username}/edit", style: 'margin-left:50px;', class: "btn btn-success" %>
         </div>
       </div>
 
@@ -22,22 +22,22 @@
       <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> 
           <h2>Biografía</h2>
-          <div id="user-biography"><%= current_user.biography %></div>
+          <div id="user-biography"><%= @user.biography %></div>
         </div>
         <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1"> 
           <h2>Estadísticas</h2>
           <div class="profile-container"> 
-            <p> <span>ID de usuario: </span> <%= (current_user.id * 12345).to_s(16) %></p> 
-            <p> <span>Se unió: </span> <%= time_ago_in_words(current_user.created_at) %></p> 
-            <p> <span>Ultima visita: </span> <%= current_user.last_login_at %></p> 
-            <p> <span>Libros creados: </span> <%= current_user.books.size %></p> 
-            <p> <span>ip ultima conexion: </span> <%= current_user.last_login_from_ip_address %> </p>  
+            <p> <span>ID de usuario: </span> <%= (@user.id * 12345).to_s(16) %></p> 
+            <p> <span>Se unió: </span> <%= time_ago_in_words(@user.created_at) %></p> 
+            <p> <span>Ultima visita: </span> <%= @user.last_login_at %></p> 
+            <p> <span>Libros creados: </span> <%= @user.books.size %></p> 
+            <p> <span>ip ultima conexion: </span> <%= @user.last_login_from_ip_address %> </p>  
           </div> 
         </div>
         <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
           <div class="hidden-xs hidden-sm"> 
-            <%= image_tag current_user.avatar.url(:medium), class: "profile-img img-responsive pull-right" %><br>
-            <h4><%= "#{current_user.firstname} #{current_user.lastname}" %></h4>
+            <%= image_tag @user.avatar.url(:medium), class: "profile-img img-responsive pull-right" %><br>
+            <h4><%= "#{@user.firstname} #{@user.lastname}" %></h4>
           </div> 
         </div>
       </div>
@@ -50,13 +50,13 @@
               <h2>Mis Libros</h2>
             </div>
             <div class="col-lg-3 col-md-3">
-              <%= link_to 'Crear libro', new_user_book_path(current_user), class: 'btn btn-primary', style: 'float:right;' %>
+              <%= link_to 'Crear libro', new_user_book_path(@user), class: 'btn btn-primary', style: 'float:right;' %>
             </div>
           </div>
           <div class="row-fluid recent-downloads"> 
-            <% current_user.books.each do |book| %> 
+            <% @user.books.each do |book| %> 
               <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"> 
-                <%= link_to user_book_path(current_user, book) do %>
+                <%= link_to user_book_path(@user, book) do %>
                   <%= image_tag book.image(:thumb) %>
                 <% end %>
                 <h4><%= book.title %></h4>
