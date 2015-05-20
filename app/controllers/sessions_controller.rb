@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
     if @user = login(params[:email], params[:password], params[:remember_me])
       redirect_to :Home, notice: 'Bienvenido'
     else
-      flash.now[:error] = 'Usuario, Email o Contraseña Equivocado, intente de nuevo'
-      redirect_to '/login'
+      redirect_to '/login', notice: 'Usuario, Email o Contraseña Equivocado, intente de nuevo'
     end
   end
 

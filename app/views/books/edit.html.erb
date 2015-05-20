@@ -76,7 +76,7 @@
         <div class="form-group">
           <%= f.label "Fecha de publicacion", class: "col-lg-3 control-label" %>
           <div class="col-lg-8">
-            <%= f.date_select :published_date, class: "form-control" %>
+            <%= f.date_select :published_date, start_year: 1800, end_year: Date.today.year, class: "form-control" %>
           </div>
         </div>
 
@@ -85,7 +85,7 @@
           <div class="col-md-8">
             <%= f.submit "Editar Libro", class: 'btn btn-primary' %>
             <span></span>
-            <%= link_to "Cancelar", "/home", class: 'btn btn-default' %>
+            <%= link_to "Cancelar", "/users/#{@user.username}", class: 'btn btn-default' %>
           </div>
         </div>
       </div>

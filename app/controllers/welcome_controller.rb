@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
-  
-  skip_before_action :require_login 
+  before_action :require_login, only: :home 
 
   def index
     key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
@@ -16,30 +15,26 @@ class WelcomeController < ApplicationController
   end
 
   def home
-    if current_user
-      key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
-      user_ip = request.remote_ip
-      @filters = ['no filter', 'partial', 'full', 'free-ebooks', 'paid-ebooks', 'ebooks']
-      @keywords = ['no keyword', 'intitle', 'inauthor', 'inpublisher', 'subject', 'isbn']
-      if params[:search]
-        if params[:filtering] == 'no filter'
-          if params[:keyword] == 'no keyword'
-            @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10)
-          else
-            @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
-          end
+    key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
+    user_ip = request.remote_ip
+    @filters = ['no filter', 'partial', 'full', 'free-ebooks', 'paid-ebooks', 'ebooks']
+    @keywords = ['no keyword', 'intitle', 'inauthor', 'inpublisher', 'subject', 'isbn']
+    if params[:search]
+      if params[:filtering] == 'no filter'
+        if params[:keyword] == 'no keyword'
+          @books = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10)
         else
-          if params[:keyword] != 'no keyword'
-            @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
-          else
-            @books = GoogleBooks.search(params[:search], {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
-          end
+          @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
         end
       else
-        @books = []
+        if params[:keyword] != 'no keyword'
+          @books = GoogleBooks.search("#{params[:keyword]}:#{params[:search]}", {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
+        else
+          @books = GoogleBooks.search(params[:search], {filter: params[:filtering], count: 30, api_key: key}, user_ip).to_a.paginate(page: params[:page], per_page: 10) 
+        end
       end
     else
-      redirect_to :root
+      @books = []
     end
   end
 end
