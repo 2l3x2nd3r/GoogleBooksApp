@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520031445) do
+ActiveRecord::Schema.define(version: 20150520044940) do
 
   create_table "books", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150520031445) do
     t.string   "categories"
     t.string   "isbn"
     t.string   "publisher"
-    t.datetime "published_date"
+    t.date     "published_date"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150520031445) do
     t.string   "email",                                               null: false
     t.string   "crypted_password",                                    null: false
     t.string   "salt",                                                null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "activation_state",                default: "pending"
