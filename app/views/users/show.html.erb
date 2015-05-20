@@ -12,8 +12,10 @@
           <h4><%= @user.email %></h4> 
         </div>
         <div class="col-lg-3 col-md-3"> 
-          <%= link_to 'Cancelar Cuenta', "/users/#{@user.username}", class: "btn btn-danger", style: 'float:right;', method: :delete, data: { confirm: "Estas Seguro?" } %>
-          <%= link_to 'Editar', "/users/#{@user.username}/edit", style: 'margin-left:50px;', class: "btn btn-success" %>
+          <% if logged_in?(@user) %>
+            <%= link_to 'Cancelar Cuenta', "/users/#{@user.username}", class: "btn btn-danger", style: 'float:right;', method: :delete, data: { confirm: "Estas Seguro?" } %>
+            <%= link_to 'Editar', "/users/#{@user.username}/edit", style: 'margin-left:50px;', class: "btn btn-success" %>
+          <% end %>
         </div>
       </div>
 
