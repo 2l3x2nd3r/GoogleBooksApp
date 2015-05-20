@@ -17,7 +17,7 @@ class BooksController < ApplicationController
   def update
     @book.assign_attributes(book_params)
     if @book.save
-      redirect_to "/users/#{current_user.username}"
+      redirect_to "/users/#{current_user.username}", notice: 'El libro ha sido actualizado'
     else
       render :edit
     end
@@ -50,6 +50,6 @@ class BooksController < ApplicationController
 
   def get_book
     get_user
-    @book = @user.books.find(params[:id])
+    @book = Book.find(params[:id])
   end
 end

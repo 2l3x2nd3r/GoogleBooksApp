@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
   obfuscate_id
 
   validates :title, presence: true, on: :create
-  validates :title, :isbn, uniqueness: true
+  validates :title, uniqueness: true
 
   has_attached_file :image,
     storage: :dropbox,
