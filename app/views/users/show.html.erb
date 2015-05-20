@@ -10,8 +10,8 @@
           <h4><%= current_user.email %></h4> 
         </div>
         <div class="col-lg-3 col-md-3"> 
-          <%= link_to 'Editar', "/users/#{current_user.username}/edit", class: "btn btn-primary" %>
-          <%= link_to 'Cancelar Cuenta', "/users/#{current_user.username}", class: "btn btn-danger", method: :delete, data: { confirm: "Estas Seguro?" } %>
+          <%= link_to 'Cancelar Cuenta', "/users/#{current_user.username}", class: "btn btn-danger", style: 'float:right;', method: :delete, data: { confirm: "Estas Seguro?" } %>
+          <%= link_to 'Editar', "/users/#{current_user.username}/edit", style: 'margin-left:50px;', class: "btn btn-success" %>
         </div>
       </div>
 
@@ -26,10 +26,10 @@
           <h2>Estadísticas</h2>
           <div class="profile-container"> 
             <p> <span>ID de usuario: </span> <%= (current_user.id * 12345).to_s(16) %></p> 
-            <p> <span>Se unió: </span> Enero 7 de 2014 - 2:31 pm </p> 
-            <p> <span>Ultima vista: </span> Mayo 19 de 2015 - 12:07 pm </p> 
-            <p> <span>Libros descargados: </span> 76 </p> 
-            <p> <span>Solicitudes: </span> 1 </p>  
+            <p> <span>Se unió: </span> <%= time_ago_in_words(current_user.created_at) %></p> 
+            <p> <span>Ultima visita: </span> <%= current_user.last_login_at ? time_ago_in_words(current_user.last_login_at) : time_ago_in_words(current_user.last_activity_at) %></p> 
+            <p> <span>Libros creados: </span> <%= current_user.books.size %></p> 
+            <p> <span>ip ultima conexion: </span> <%= current_user.last_login_from_ip_address %> </p>  
           </div> 
         </div>
         <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
@@ -42,8 +42,15 @@
 
       <div class="row"> 
         <div class="col-xs-20"> 
-          <div class="line"></div> 
-          <h2>Mis Libros</h2> 
+          <div class="line"></div>
+          <div class="row">
+            <div class="col-lg-9 col-md-9"> 
+              <h2>Mis Libros</h2>
+            </div>
+            <div class="col-lg-3 col-md-3">
+              <%= link_to 'Crear libro', new_user_book_path(current_user), class: 'btn btn-primary', style: 'float:right;' %>
+            </div>
+          </div>
           <div class="row-fluid recent-downloads"> 
             <% current_user.books.each do |book| %> 
               <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2"> 

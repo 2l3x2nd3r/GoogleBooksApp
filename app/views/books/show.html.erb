@@ -17,7 +17,8 @@
       <% end %>
       <center><%= link_to 'Descargar Libro', @book.pdf.url, class: "btn btn-primary hidden-xs hidden-md"%></center>
       <% if current_user == @user %>
-        <br><center><%= link_to 'Eliminar Libro', user_book_path(@user, @book), class: "btn btn-danger hidden-xs hidden-md", method: :delete, data: { confirm: "Estas Seguro?" } %></center>
+        <br><center><%= link_to 'Editar Libro', edit_user_book(@user, @book), class: "btn btn-success hidden-xs hidden-md" %></center>
+        <center><%= link_to 'Eliminar Libro', user_book_path(@user, @book), class: "btn btn-danger hidden-xs hidden-md", method: :delete, data: { confirm: "Estas Seguro?" } %></center>
       <% end %>
     </div>
 

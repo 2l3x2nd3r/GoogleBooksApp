@@ -13,6 +13,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :reset_password_token
       t.datetime :reset_password_token_expires_at
       t.datetime :reset_password_email_sent_at
+
+      t.timestamps null: false
     end
     
     add_index :users, :email, unique: true
