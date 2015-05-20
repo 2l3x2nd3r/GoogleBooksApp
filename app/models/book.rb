@@ -25,6 +25,10 @@ class Book < ActiveRecord::Base
 
   before_save :format_attributes
 
+  def self.search(attrb, query)
+    where("#{attrb} like ?", "%#{query}%") 
+  end
+
   private
   def format_attributes
     self.title.downcase!

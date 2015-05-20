@@ -4,21 +4,36 @@
         <div class="book-result col-md-15 col-lg-15 col-sm-6 col-xs-6">
           <div class="result-container">
             <figure>
-              <% if book.image_link %>
-                <%= link_to googlebooks_show_path(isbn: book.isbn, title: book.title) do %>
-                  <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265" %>
+              <% if book.methods.include?(:user) %>
+                <% if book.image %>
+                  <%= link_to user_book_path(book.user, book) do %>
+                    <%= image_tag book.image(:thumb), class: "thumbnail", size: "180x265" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_book_path(book.user, book) do %>
+                    <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
+                  <% end %>
                 <% end %>
               <% else %>
-                <%= link_to books_show_path(isbn: book.isbn, title: book.title) do %>
-                  <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
+                <% if book.image_link %>
+                  <%= link_to googlebooks_show_path(isbn: book.isbn, title: book.title) do %>
+                    <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to googlebooks_show_path(isbn: book.isbn, title: book.title) do %>
+                    <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
+                  <% end %>
                 <% end %>
               <% end %>
             </figure>
             <div class="book-result-bottom">
-              <%= link_to book.title, googlebooks_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
-              <div class="book-year"><%= book.published_date %></div>
-              <div class="book-tags">
-              </div>
+              <% if book.methods.include?(:user) %>
+                <%= link_to book.title, user_book_path(book.user, book), class: "book-title" %>
+                <div class="book-year"><%= book.published_date %></div>
+              <% else %>
+                <%= link_to book.title, googlebooks_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
+                <div class="book-year"><%= book.published_date %></div>
+              <% end %>
             </div>
           </div>
         </div>

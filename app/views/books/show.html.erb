@@ -1,4 +1,4 @@
-<div id="background-image" style="background: url(http://camaradellibro.cl/wp-content/uploads/2012/09/libro_socios17.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div>
+<div id="background-image" style="background: url(https://dl-web.dropbox.com/get/fondos/photo_2015-05-20_02-19-03.jpg?_subject_uid=238475142&w=AADF7_teZmdI8bc0iKF12ZpKSwvRfjbQuOIXqnD-UO3DPA) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div>
 <div id="background-overlay"></div>
 
 <div class="container" style="margin-top:15px;">
@@ -15,10 +15,10 @@
       <% else %>
         <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "img-responsive thumbnail", size: "200x285" %>
       <% end %>
-      <center><%= link_to 'Descargar Libro', @book.pdf.url, class: "btn btn-primary hidden-xs hidden-md"%></center>
+      <%= link_to 'Descargar Libro', @book.pdf.url, style: 'margin-left:35px;', class: "btn btn-primary"%>
       <% if current_user == @user %>
-        <br><center><%= link_to 'Editar Libro', edit_user_book_path(@user, @book), class: "btn btn-success hidden-xs hidden-md" %></center>
-        <center><%= link_to 'Eliminar Libro', user_book_path(@user, @book), class: "btn btn-danger hidden-xs hidden-md", method: :delete, data: { confirm: "Estas Seguro?" } %></center>
+        <%= link_to 'Editar Libro', edit_user_book_path(@user, @book), style: 'margin-left:35px;', class: "btn btn-success" %>
+        <%= link_to 'Eliminar Libro', user_book_path(@user, @book), style: 'margin-left:35px;', class: "btn btn-danger", method: :delete, data: { confirm: "Estas Seguro?" } %>
       <% end %>
     </div>
 
@@ -30,7 +30,6 @@
       </div>
       <p>
         <em class="pull-left">Disponible en: &nbsp;</em>
-        <a>Libro</a>
         <a>e-Book</a>
       </p>
       <div class="bottom-info">
