@@ -7,21 +7,21 @@
               <% if book.methods.include?(:user) %>
                 <% if book.image %>
                   <%= link_to user_book_path(book.user, book) do %>
-                    <%= image_tag book.image(:thumb), class: "thumbnail", size: "180x265" %>
+                    <%= image_tag book.image(:thumb), class: "thumbnail", size: "180x265", target: "_blank" %>
                   <% end %>
                 <% else %>
                   <%= link_to user_book_path(book.user, book) do %>
-                    <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
+                    <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265", target: "_blank" %>
                   <% end %>
                 <% end %>
               <% else %>
                 <% if book.image_link %>
                   <%= link_to googlebooks_show_path(isbn: book.isbn, title: book.title) do %>
-                    <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265" %>
+                    <%= image_tag book.image_link(zoom: 5), class: "thumbnail", size: "180x265", target: "_blank" %>
                   <% end %>
                 <% else %>
                   <%= link_to googlebooks_show_path(isbn: book.isbn, title: book.title) do %>
-                    <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265" %>
+                    <%= image_tag 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr', class: "thumbnail", size: "180x265", target: "_blank" %>
                   <% end %>
                 <% end %>
               <% end %>
