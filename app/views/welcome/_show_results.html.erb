@@ -28,10 +28,10 @@
             </figure>
             <div class="book-result-bottom">
               <% if book.methods.include?(:user) %>
-                <%= link_to book.title, user_book_path(book.user, book), class: "book-title" %>
+                <%= link_to book.title, user_book_path(book.user, book), class: "book-title", target: "_blank" %>
                 <div class="book-year"><%= book.published_date %></div>
               <% else %>
-                <%= link_to book.title, googlebooks_show_path(isbn: book.isbn, title: book.title), class: "book-title" %>
+                <%= link_to book.title, googlebooks_show_path(isbn: book.isbn, title: book.title), class: "book-title", target: "_blank" %>
                 <div class="book-year"><%= book.published_date %></div>
               <% end %>
             </div>
