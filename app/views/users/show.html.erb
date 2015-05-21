@@ -12,7 +12,7 @@
         </div>
         <div class="col-lg-3 col-md-3">
           <% if current_user == @user %>
-            <%= link_to 'Editar', "/users/#{@user.username}/edit", style: 'margin-left:50px;', class: "btn btn-primary" %>
+            <%= link_to 'Editar', "/users/#{@user.username}/edit", class: "btn btn-primary" %>
           <% end %> 
         </div>
       </div>
@@ -21,7 +21,7 @@
 
       <div class="row">
         <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12"> 
-          <%= image_tag @user.avatar.url(:medium), class: "profile-img img-responsive" %>
+          <%= image_tag @user.avatar.url(:medium), class: "profile-img img-responsive img-circle" %>
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> 
