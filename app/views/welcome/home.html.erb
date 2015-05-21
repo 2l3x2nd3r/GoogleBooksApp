@@ -30,7 +30,29 @@
   <% end %>
 </div>
 
-<% if @books != [] %>
+
+
+<% if @books == [] %>
+  <div class="container" style="position:relative;">
+    <h1 id="results-h">Mis Libros</h1>
+  </div>
+  <div class="line"></div>
+
+  <div class="row"> 
+    <div class="col-xs-20"> 
+      <div class="row-fluid recent-downloads">
+        <% current_user.books.each do |book| %> 
+          <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 rbook">
+            <h4><%= book.title %></h4>
+            <%= link_to user_book_path(@user, book) do %>
+              <%= image_tag book.image(:thumb) %>
+            <% end %>
+          </div>
+        <% end %>  
+      </div> 
+    </div> 
+  </div>
+<% else %>
   <div class="container" style="position:relative;">
     <h1 id="results-h">Resultados</h1>
   </div>

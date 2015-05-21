@@ -1,4 +1,25 @@
 <div id="background-image" style="background: url(http://webdgallery.com/wp-content/uploads/2014/07/slider_70640905-e1390422140138.jpg) no-repeat center center; background-size: cover; -webkit-background-size: cover;-moz-background-size: cover; -o-background-size: cover;background-attachment: fixed;"></div> 
 <div id="background-overlay"></div>
+  
 
-<center><p> CONT </p></center>
+<div class="container" style="position:relative;">
+  <h1 id="results-h">Contactos</h1>
+</div>
+<div class="line"></div>
+<div class='container'>
+  <div class="row"> 
+    <div class="col-xs-20"> 
+      <div class="row-fluid recent-downloads">
+        <% @contacts.each_with_index do |contact, i| %> 
+          <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 rbook">
+            <%= link_to "/users/#{contact[1][:username]}" do %>
+              <%= image_tag contact[1][:image], size: '180x265', class: 'thumbnail' %>
+            <% end %>
+            <h4><%= contact[1][:name] %></h4>
+            <h4><%= contact[1][:celphone] %></h4>
+          </div>
+        <% end %>  
+      </div> 
+    </div> 
+  </div>
+</div>
