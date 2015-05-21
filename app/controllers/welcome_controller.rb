@@ -4,10 +4,8 @@ class WelcomeController < ApplicationController
   def index
     key = 'AIzaSyDLYwW6jCVe15VBbsFFZhZ_INZNgol-oUs'
     user_ip = request.remote_ip
-    if current_user
-      redirect_to :Home
-    end
-    if params[:search]
+    redirect_to :Home if current_user
+    if params[:search] != ''
       ebooks = Book.search('title', params[:search]).to_a
       gbooks = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a
       @books = (ebooks + gbooks).paginate(page: params[:page], per_page: 10)
@@ -21,7 +19,7 @@ class WelcomeController < ApplicationController
     user_ip = request.remote_ip
     @filters = ['no filter', 'partial', 'full', 'free-ebooks', 'paid-ebooks', 'ebooks']
     @keywords = ['no keyword', 'title', 'authors', 'publisher', 'isbn']
-    if params[:search]
+    if params[:search] != ''
       if params[:filtering] == 'no filter'
         if params[:keyword] == 'no keyword'
           ebooks = Book.search('title', params[:search]).to_a

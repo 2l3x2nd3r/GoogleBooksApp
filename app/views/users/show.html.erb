@@ -31,7 +31,7 @@
           <div class="profile-container"> 
             <p> <span>ID de usuario: </span> <%= (@user.id * 12345).to_s(16) %></p> 
             <p> <span>Se unió: </span> <%= time_ago_in_words(@user.created_at) %></p> 
-            <p> <span>Ultima visita: </span> <%= @user.last_login_at %></p> 
+            <p> <span>Ultima visita: </span> <%= time_ago_in_words(@user.last_login_at) %></p> 
             <p> <span>Libros creados: </span> <%= @user.books.size %></p> 
             <p> <span>ip ultima conexion: </span> <%= @user.last_login_from_ip_address %> </p>  
           </div> 
