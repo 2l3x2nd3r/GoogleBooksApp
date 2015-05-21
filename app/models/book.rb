@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
 
   has_attached_file :image,
     storage: :dropbox,
-    styles: { medium: "300x300>", thumb: "100x100>", icon: "50x50" },
+    styles: { medium: "300x300!", thumb: "100x100!", icon: "50x50!" },
     default_url: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSo8uPVFZTL8nxsBIPhyBw9DxZ0lbyS4hqMpQxQU4wYu0gaFDe34q-UhsHr",
     dropbox_credentials: Rails.root.join("#{Rails.root}/config/dropbox.yml"),
     dropbox_options: { path: proc { |style| "files/books/user_#{user_id}/#{id}/image/#{image.original_filename}" } },

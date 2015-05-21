@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
     storage: :dropbox,
-    styles: { medium: "300x300", thumb: "100x100", icon: "50x50" },
+    styles: { medium: "300x300!", thumb: "100x100!", icon: "50x50!" },
     default_url: "https://en.opensuse.org/images/0/0b/Icon-user.png",
     dropbox_credentials: Rails.root.join("#{Rails.root}/config/dropbox.yml"),
     dropbox_options: { path: proc { |style| "files/avatars/#{id}/#{avatar.original_filename}" } },

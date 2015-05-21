@@ -578,7 +578,7 @@ a {
   margin: 0;
 }
 
-.info-page a {
+.info-page a.btn {
   margin-top: 10px;
   width: 100%;
 }
