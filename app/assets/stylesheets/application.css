@@ -554,137 +554,164 @@ a {
 /*CSS for profile page*/
 
 .info-page {
- text-align: left;
- margin-bottom: 50px;
- margin-top: 25px;
+  text-align: left;
+  margin-bottom: 50px;
+  margin-top: 25px;
 }
 
 @media (min-width: 992px){
- .col-md-16 {
- width: 80%;
- }
+  .col-md-16 {
+    width: 80%;
+  }
 
- .info-page h1 {
- font-size: 2.5em;
- line-height: 42px;
- }
+  .info-page h1 {
+    font-size: 2.5em;
+    line-height: 42px;
+  }
 }
 
 .info-page h1 {
- font-weight: bold;
- color: #fff;
- font-size: 2.5em;
- text-shadow: 0 2px 2px rgba(0,0,0,.4);
- margin: 0;
+  font-weight: bold;
+  color: #fff;
+  font-size: 2.5em;
+  text-shadow: 0 2px 2px rgba(0,0,0,.4);
+  margin: 0;
 }
 
 .info-page button {
- margin-top: 10px;
- width: 100%;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .info-page .line {
- margin: 30px 0;
+  margin: 30px 0;
 }
 
 .line {
- border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 .col-xs-20{
- width: 100%;
+  width: 100%;
 }
 
 .info-page h2 {
- font-size: 1.7em;
- margin-bottom: 35px;
- margin-left: 0;
- margin-top: 10px;
+  font-size: 1.7em;
+  margin-bottom: 35px;
+  margin-left: 0;
+  margin-top: 10px;
 }
 
 @media (max-width: 991px){
- .info-page h1 {
- text-align: center;
- }
+  .info-page h1, .info-page h2, .info-page h3 {
+    text-align: center;
+  }
 }
 
 @media (max-width: 991px){
- .info-page h1 {
- font-size: 1.6em;
- line-height: 20px;
- }
+  .info-page h1 {
+    font-size: 1.6em;
+    line-height: 20px;
+  }
 }
 
 @media (max-width: 767px){
- .info-page .profile-stats .profile-container {
- display: table;
- margin: 0 auto;
- }
+  .info-page .profile-stats .profile-container {
+    display: table;
+    margin: 0 auto;
+  }
 }
 
 .info-page .profile-stats p {
- margin-top: 10px;
+  margin-top: 10px;
 }
 
 .info-page label, #info-page p {
- color: #fff;
- font-size: .95em;
- margin-bottom: 0;
+  color: #fff;
+  font-size: .95em;
+  margin-bottom: 0;
 }
 
 .profile-container p{
- color: #fff;
+  color: #fff;
 }
 
 #user-biography {
- line-height: 24px;
- text-align: justify;
- text-justify: inter-word;
- display: block;
- color: #fff;
+  line-height: 24px;
+  text-align: justify;
+  text-justify: inter-word;
+  display: block;
+  color: #fff;
 }
 
 .info-page .profile-img {
- margin-top: 20px;
- max-height: 220px;
- vertical-align: middle;
+  margin-top: 20px;
+  max-height: 220px;
+  vertical-align: middle;
 }
 
-.pull-right {
- float: right !important;
+.profile-img{
+  border-radius: 100%;
+}
+
+
+@media(max-width: 768px){
+  .profile-img{
+    width: 50%;
+    height: 50% !important;
+    margin: 10% 25%;
+  }
 }
 
 .img-responsive {
- display: block;
- max-width: 100%;
- height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .info-page .recent-downloads a {
- border: 4px solid #fff;
- margin-bottom: 20px;
- border-radius: 3px;
- float: left;
- -webkit-border-radius: 3px;
- -moz-border-radius: 3px;
- transition: border .15s ease-in-out;
- -moz-transition: border .15s ease-in-out;
- -webkit-transition: border .15s ease-in-out;
+  border: 4px solid #fff;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  transition: border .15s ease-in-out;
+  -moz-transition: border .15s ease-in-out;
+  -webkit-transition: border .15s ease-in-out;
+  margin-left: 15%;
 }
 
 .info-page .recent-downloads img {
- width: 92px;
- height: 138px;
- margin: 0 auto;
- vertical-align: middle;
+  width: 92px;
+  height: 138px;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+.rbook div{
+  display: block;
+}
+
+.recent-downloads h4{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media(max-width: 991px){
- .info-page .recent-downloads img{
- margin:0 auto;
- }
+  .info-page .recent-downloads img{
+    margin:0 auto;
+  }
+
+  .info-page .recent-downloads a{
+    margin:0 auto;
+  }
 }
 /*END of CSS for profile page*/
+
+footer{
+  bottom: 0;
+}
 
 .footer-distributed{
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
