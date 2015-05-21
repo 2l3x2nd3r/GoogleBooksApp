@@ -11,9 +11,11 @@ class WelcomeController < ApplicationController
         gbooks = GoogleBooks.search(params[:search], {count: 30, api_key: key}, user_ip).to_a
         @books = (ebooks + gbooks).paginate(page: params[:page], per_page: 5)
       else
+        @best_book = Scraping.scrap
         @books = []
       end
     else
+      @best_book = Scraping.scrap
       @books = []
     end
   end

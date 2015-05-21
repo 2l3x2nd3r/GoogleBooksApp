@@ -31,6 +31,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'mechanize'
 gem 'paperclip'
 gem 'paperclip-dropbox'
 gem 'googlebooks'

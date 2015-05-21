@@ -56,9 +56,6 @@
             <% else %>
               <li><a href=<%= root_path %>>Inicio <span class="sr-only">(current)</span></a></li>
             <% end %>
-            <li> <%= link_to 'Acerca de', :About %> </li>
-            <li> <%= link_to 'Documentación', :Documentation %> </li>
-            <li> <%= link_to 'Contáctanos', :Contact %> </li>
           </ul>
 
           <%= form_tag(current_user ? :Home : :root, :method => "get", id: "search-form", class: "navbar-form navbar-left") do %>
@@ -102,19 +99,19 @@
           </div>
           <div class="footer-left">
             <p class="footer-links">
-              <a href="#">Inicio</a>
+              <%= link_to 'Inicio', :root %>
               ·
-              <a href="#">Explora</a>
+              <%= link_to 'Documentación', :Documentation %>
               ·
-              <a href="#">Acerca</a>
+              <%= link_to 'Acerca', :About %>
               ·
-              <a href="#">Contacto</a>
+              <%= link_to 'Contáctanos', :Contact %>
             </p>
             <p>PickAppBook &copy; 2015</p>
           </div>
         </div>
       </footer>
     </div>
-    
+  
   </body>
 </html>

@@ -7,11 +7,34 @@
     <h1 class="hidden-xs hidden-sm">Lee, Compra y sube tus propios libros con PickAppBook</h1>
 </div>
 
-<div class="container" style="padding-top:10px;">
-  <h1 id="results-h"><span class="glyphicon glyphicon-star" style="margin-top:3px;"></span> Libros más populares</h1>
-  <hr class="featurette-divider" style="position:relative;padding-top:55px;">
-</div>
-
 <% if @books != [] %>
+  <div class="container" style="padding-top:10px;">
+    <h1 id="results-h"><span class="glyphicon glyphicon-star" style="margin-top:3px;"></span> Resultado</h1>
+    <hr class="featurette-divider" style="position:relative;padding-top:55px;">
+  </div>
   <%= render 'show_results' %>
+<% else %>
+  <% if @best_book != [] %>
+    <div class="container" style="padding-top:10px;">
+      <h1 id="results-h"><span class="glyphicon glyphicon-star" style="margin-top:3px;"></span> Libros más populares</h1>
+      <hr class="featurette-divider" style="position:relative;padding-top:55px;">
+    </div>
+    <div id="results-frame" class="container" style="position:relative;">
+      <div class="row">
+        <% @best_book.each do |book| %> 
+            <div class="book-result col-md-15 col-lg-15 col-sm-6 col-xs-6">
+              <div class="result-container">
+                <figure>
+                  <%= link_to book[1][:link], target: "_blank" do %>
+                    <%= image_tag book[1][:image], class: "thumbnail", size: '180x265' %>
+                  <% end %>
+                </figure>
+                <div class="book-result-bottom">
+                  <%= link_to book[1][:title], book[1][:link], class: "book-title", target: "_blank" %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
 <% end %>
