@@ -44,7 +44,7 @@
         <% current_user.books.each do |book| %> 
           <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 rbook">
             <h4><%= book.title %></h4>
-            <%= link_to user_book_path(@user, book) do %>
+            <%= link_to user_book_path(current_user, book) do %>
               <%= image_tag book.image(:thumb) %>
             <% end %>
           </div>
