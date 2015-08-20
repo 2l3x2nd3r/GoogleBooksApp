@@ -8,7 +8,7 @@ module Scraping
     response = bot.get(page).parser
     links = response.css('div.card-content a:nth-child(1)')
     images = response.css('div.card-content img')
-    names = response.css('div.details h2')
+    names = response.css('div.details a')
     info = {}
     
     (0..9).each do |i|
