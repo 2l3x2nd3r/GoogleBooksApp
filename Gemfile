@@ -1,10 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-
-gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :assets do
@@ -14,14 +11,9 @@ group :assets do
   gem 'therubyracer', platforms: :ruby
 end
 
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring', '~> 1.3.6'
-end
-
 group :development do
   gem 'sqlite3'
+  gem 'spring'
   gem 'better_errors'
 end
 
